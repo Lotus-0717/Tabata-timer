@@ -15,6 +15,9 @@ function Video({ youtubeId, isReady, setIsReady, setPlayer }: VideoProps) {
   const opts: YouTubeProps['opts'] = {
     height: '390',
     width: '640',
+    playerVars: {
+      autoplay: 1
+    }
   };
 
   const onReady = (event: YouTubePlayer) => {

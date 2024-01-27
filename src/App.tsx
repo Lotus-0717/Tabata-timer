@@ -6,34 +6,36 @@ import { Typography } from '@mui/material';
 import { YouTubePlayer } from 'react-youtube';
 import Timer from './components/Timer';
 import Video from './components/Video';
-import GetVideoUrl from './components/GetVideo';
+import GetVideoUrl from './components/GetVideoUrl';
 function App() {
-  const [player, setPlayer] = useState(null);
-  const [YTId, setYTId] = useState('');
+  const [player, setPlayer] = useState<YouTubePlayer | null>(null);
+  const [ytId, setYtId] = useState('');
   const [isReady, setIsReady] = useState(false);
+  const [startTime, setStartTime] = useState(0);
   const playVideoHandler = () => {
-    (player as YouTubePlayer).playVideo();
+    player.seekTo(startTime);
+    player.playVideo();
   };
 
   useEffect(() => {
     setIsReady(false);
-  }, [YTId]);
+  }, [ytId]);
 
   return (
     <>
       <Typography variant="h3" gutterBottom>
         Tabata Timer
       </Typography>
-      <GetVideoUrl setYTId={setYTId}></GetVideoUrl>
+      <GetVideoUrl setYtId={setYtId}></GetVideoUrl>
       <Video
-        youtubeId={YTId}
+        youtubeId={ytId}
         isReady={isReady}
         setIsReady={setIsReady}
         setPlayer={setPlayer}
       >
       </Video>
       {
-        isReady && <Timer></Timer>
+        isReady && <Timer setStartTime={setStartTime}></Timer>
       }
       <LoadingButton
         variant="contained"

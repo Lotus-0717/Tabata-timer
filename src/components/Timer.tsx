@@ -1,8 +1,19 @@
 import { Box, TextField, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 
+interface TimerProps{
+  setStartTime: React.Dispatch<React.SetStateAction<number>>;
+}
 
-function Timer() {
+function Timer({setStartTime}: TimerProps) {
+  const [HH, setHH] = useState(0);
+  const [MM, setMM] = useState(0);
+  const [SS, setSS] = useState(0);
+  const getTotalTime = () => {
+    setStartTime((HH * 3600) + (MM * 60) + SS);
+  }
 
+  useEffect(getTotalTime, [HH, MM, SS]);
   return (
     <Box sx={{
       display: 'flex',
@@ -26,6 +37,10 @@ function Timer() {
             min: 0
           }
         }}
+        onChange={(event) => {
+          setHH(Number(event.target.value));
+          getTotalTime();
+        }}
       />
       <Typography variant="body1" gutterBottom sx={{
         width: 'auto !important'
@@ -42,6 +57,10 @@ function Timer() {
             min: 0
           }
         }}
+        onChange={(event) => {
+          setMM(Number(event.target.value));
+          getTotalTime();
+        }}
       />
       <Typography variant="body1" gutterBottom sx={{
         width: 'auto !important'
@@ -57,6 +76,10 @@ function Timer() {
           inputProps: {
             min: 0
           }
+        }}
+        onChange={(event) => {
+          setSS(Number(event.target.value));
+          getTotalTime();
         }}
       />
     </Box>

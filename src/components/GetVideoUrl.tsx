@@ -1,15 +1,15 @@
 import { Box, Button, TextField } from "@mui/material";
 interface GetVideoUrlProps {
-  setYTId: React.Dispatch<React.SetStateAction<string>>;
+  setYtId: React.Dispatch<React.SetStateAction<string>>;
 }
-function GetVideoUrl({setYTId}: GetVideoUrlProps) {
+function GetVideoUrl({setYtId}: GetVideoUrlProps) {
   const getVideo = () => {
     const videoUrlField = document.querySelector<HTMLInputElement>('#videoUrl');
     if (videoUrlField) {
       const part = videoUrlField.value.split('v=');
       if (part.length > 1) {
         const id = part[1].split('&')[0];
-        setYTId(id);
+        setYtId(id);
       }
     }
   }
