@@ -25,7 +25,7 @@ function Video({ youtubeId, isReady, setIsReady, setPlayer }: VideoProps) {
   };
 
   return (
-    <Box sx={{ position: 'relative' }}>
+    <Box sx={{ position: 'relative', marginBottom: 1 }}>
       {youtubeId && <YouTube
         videoId={youtubeId}
         opts={opts}

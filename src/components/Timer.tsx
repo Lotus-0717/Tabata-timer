@@ -8,6 +8,7 @@ function Timer() {
       display: 'flex',
       alignItems: 'flex-end',
       justifyContent: 'center',
+      marginBottom: 2,
       '& > :not(style)': { m: 1, width: '15ch' },
     }}>
       <Typography variant="body1" gutterBottom sx={{
