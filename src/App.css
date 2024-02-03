@@ -4,3 +4,18 @@
   padding: 2rem;
   text-align: center;
 }
+
+main{
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#player{
+  width: 100%;
+}
+
+.tabataController{
+  width: 300px;
+  margin: 0 auto;
+}

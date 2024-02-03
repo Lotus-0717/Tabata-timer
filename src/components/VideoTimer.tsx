@@ -1,30 +1,36 @@
-import { Box, TextField, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import { Box, TextField, Typography } from '@mui/material';
+import { useEffect, useState } from 'react';
 
-interface TimerProps{
+interface VideoTimerProps {
   setStartTime: React.Dispatch<React.SetStateAction<number>>;
 }
 
-function Timer({setStartTime}: TimerProps) {
+function VideoTimer({ setStartTime }: VideoTimerProps) {
   const [HH, setHH] = useState(0);
   const [MM, setMM] = useState(0);
   const [SS, setSS] = useState(0);
   const getTotalTime = () => {
-    setStartTime((HH * 3600) + (MM * 60) + SS);
-  }
+    setStartTime(HH * 3600 + MM * 60 + SS);
+  };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(getTotalTime, [HH, MM, SS]);
   return (
-    <Box sx={{
-      display: 'flex',
-      alignItems: 'flex-end',
-      justifyContent: 'center',
-      marginBottom: 2,
-      '& > :not(style)': { m: 1, width: '15ch' },
-    }}>
-      <Typography variant="body1" gutterBottom sx={{
-        width: 'auto !important'
-      }}>
+    <Box
+      sx={{
+        display: 'flex',
+        alignItems: 'flex-end',
+        justifyContent: 'center',
+        '& > :not(style)': { m: 1, width: '15ch' },
+      }}
+    >
+      <Typography
+        variant="body1"
+        gutterBottom
+        sx={{
+          width: 'auto !important',
+        }}
+      >
         Start Time:
       </Typography>
       <TextField
@@ -34,17 +40,21 @@ function Timer({setStartTime}: TimerProps) {
         type="number"
         InputProps={{
           inputProps: {
-            min: 0
-          }
+            min: 0,
+          },
         }}
         onChange={(event) => {
           setHH(Number(event.target.value));
           getTotalTime();
         }}
       />
-      <Typography variant="body1" gutterBottom sx={{
-        width: 'auto !important'
-      }}>
+      <Typography
+        variant="body1"
+        gutterBottom
+        sx={{
+          width: 'auto !important',
+        }}
+      >
         :
       </Typography>
       <TextField
@@ -54,17 +64,21 @@ function Timer({setStartTime}: TimerProps) {
         type="number"
         InputProps={{
           inputProps: {
-            min: 0
-          }
+            min: 0,
+          },
         }}
         onChange={(event) => {
           setMM(Number(event.target.value));
           getTotalTime();
         }}
       />
-      <Typography variant="body1" gutterBottom sx={{
-        width: 'auto !important'
-      }}>
+      <Typography
+        variant="body1"
+        gutterBottom
+        sx={{
+          width: 'auto !important',
+        }}
+      >
         :
       </Typography>
       <TextField
@@ -74,8 +88,9 @@ function Timer({setStartTime}: TimerProps) {
         type="number"
         InputProps={{
           inputProps: {
-            min: 0
-          }
+            min: 0,
+            max: 59,
+          },
         }}
         onChange={(event) => {
           setSS(Number(event.target.value));
@@ -86,4 +101,4 @@ function Timer({setStartTime}: TimerProps) {
   );
 }
 
-export default Timer;
+export default VideoTimer;

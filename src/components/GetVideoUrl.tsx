@@ -1,8 +1,8 @@
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, TextField } from '@mui/material';
 interface GetVideoUrlProps {
   setYtId: React.Dispatch<React.SetStateAction<string>>;
 }
-function GetVideoUrl({setYtId}: GetVideoUrlProps) {
+function GetVideoUrl({ setYtId }: GetVideoUrlProps) {
   const getVideo = () => {
     const videoUrlField = document.querySelector<HTMLInputElement>('#videoUrl');
     if (videoUrlField) {
@@ -12,9 +12,17 @@ function GetVideoUrl({setYtId}: GetVideoUrlProps) {
         setYtId(id);
       }
     }
-  }
+  };
   return (
-    <Box sx={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'center', gap: 1, marginBottom: 4 }}>
+    <Box
+      sx={{
+        display: 'flex',
+        alignItems: 'flex-end',
+        justifyContent: 'center',
+        gap: 1,
+        marginBottom: 4,
+      }}
+    >
       <TextField
         id="videoUrl"
         label="Video Url"
@@ -25,15 +33,17 @@ function GetVideoUrl({setYtId}: GetVideoUrlProps) {
           }
         }}
       />
-      <Button variant="contained" color='primary' onClick={() => {
-        getVideo();
-      }}>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => {
+          getVideo();
+        }}
+      >
         Get!
       </Button>
     </Box>
-  )
+  );
 }
 
 export default GetVideoUrl;
-
-
